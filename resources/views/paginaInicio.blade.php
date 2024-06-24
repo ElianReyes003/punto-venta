@@ -37,7 +37,7 @@
         @endif
                           </div>
         <div class="flex justify-center">
-            <h1 class="text-center font-bold text-2xl">Maderas del Bosque</h1>
+            <h1 class="text-center font-bold text-2xl">Punto de venta</h1>
         </div>
                 
 
