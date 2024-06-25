@@ -53,9 +53,7 @@ class empleado_controller extends Controller
            $usuario = Empleado::where('nombreUsuario', $nombre)
                ->where('estatus', 1)
                ->first();
-
-              
-       
+          
            if ($usuario && $contraseña == $usuario->contraseña) {
                return $usuario;
            } else {
