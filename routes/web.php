@@ -42,10 +42,6 @@ Route::get('/seleccionCompra', function () {
 });
 
 
-
-
-
-
 Route::get('/tuInicioCobrador', function () {
     return view('paginaInicioCobrador');
 });
@@ -57,8 +53,6 @@ Route::get('/compraClient', function () {
 Route::get('/clientesRegistrados', function () {
     return view('listaClientes');
 });
-
-
 
 
 
@@ -79,9 +73,8 @@ Route::get('/compraEspecifica', function () {
     return view('detalleCompra');
 });
 
-Route::get('/AggUsers', function () {
-    return view('agregarEmpleado');
-})->name('formEmpleado');
+Route::get('/movimientosVision', [articulo_controller::class, 'todosmovimientosArticulos'])->name('movimientos.mostrar');
+
 
 
 
@@ -96,11 +89,21 @@ Route::get('/articuloAgregar', function () {
 })->name('articleAgg');
 
 
+Route::post('/aggArticulo', [Articulo_controller::class,"agregarArticulo"])->name('articulo.insertar');
+Route::post('/updateArticulo', [Articulo_controller::class,"actualizarArticulo"])->name('articulo.actualizar');
+Route::post('/bajaArticulo/{pkArticulo}', [Articulo_controller::class,"baja"])->name('articulo.baja');
+
+Route::get('/articuloDetails/{pkArticulo}/{vista?}', [Articulo_controller::class, 'articuloDetalle'])->name('articulo.detalle');
+Route::post('/articuloMovement/{pkArticulo}', [Articulo_controller::class, 'movimientosArticulo'])->name('articulo.Movimiento');
+
 
 
 Route::get('/tuInicio', function () {
     return view('paginaInicio');
 })->name('paginaInicio');
+
+
+Route::get('/articulesList', [Articulo_controller::class, 'todosLosArticulos3'])->name('buscarArticulo3');
 
 
 

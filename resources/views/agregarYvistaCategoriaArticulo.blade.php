@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('images/Nebula.png') }}" rel="icon" type="image/x-icon">
 
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <style>
         div.container { 
             max-width: 1200px;

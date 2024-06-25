@@ -137,9 +137,7 @@
                 </li>
                 @endif
 
-
-                
-		  @if(session('fkTipoUsuario') == 1)	
+                @if(session('fkTipoUsuario') == 1)	
             <li>
                <a href="{{ url('/allEmployees') }}"  class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-green-400">
                     <svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
