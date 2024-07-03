@@ -136,10 +136,38 @@
                     </a>
                 </li>
                 @endif
+                @if(session('fkTipoUsuario') == 1 || session('fkTipoUsuario') == 2 )		
+
+            <li>
+              <a  href="{{ url('/seleccionCompra') }}"   class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-400">
+                  <svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  viewBox="0 0 32 32" xml:space="preserve">
+              <style type="text/css">
+                  .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+                  
+                      .st1{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3;}
+                  .st2{fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+                  .st3{fill:none;}
+              </style>
+              <path class="st0" d="M6,7L6,7c-1.7,0-3,1.3-3,3v16c0,1.7,1.3,3,3,3h10c1.7,0,3-1.3,3-3V10c0-1.7-1.3-3-3-3h0"/>
+              <path class="st0" d="M6,5v12h10V5c0-1.1-0.9-2-2-2H4C5.1,3,6,3.9,6,5z"/>
+              <line class="st0" x1="8" y1="25" x2="14" y2="25"/>
+              <path class="st0" d="M19,10h8c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2h-7"/>
+              <line class="st0" x1="29" y1="14" x2="20" y2="14"/>
+              <rect x="23" y="18" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 44 -4)" class="st0" width="2" height="4"/>
+              <line class="st0" x1="11" y1="6" x2="11" y2="7"/>
+              <line class="st0" x1="11" y1="13" x2="11" y2="14"/>
+              <path class="st0" d="M12,7h-1.5C9.7,7,9,7.7,9,8.5v0C9,9.3,9.7,10,10.5,10h1c0.8,0,1.5,0.7,1.5,1.5v0c0,0.8-0.7,1.5-1.5,1.5H10"/>
+              <rect x="-72" y="-432" class="st3" width="536" height="680"/>
+              </svg>
+                  <span class="flex-1 whitespace-nowrap">Venta</span>
+              </a>
+            </li>
+@endif
 
                 @if(session('fkTipoUsuario') == 1)	
             <li>
-               <a href="{{ url('/allEmployees') }}"  class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-green-400">
+               <a href="{{ url('/allEmployees') }}"  class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-400">
                     <svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                         viewBox="0 0 480.16 480.16" xml:space="preserve">
                     <g>
@@ -196,7 +224,7 @@
                     </g>
                     </svg>
                   <span class="flex-1 whitespace-nowrap">Empleados</span>
-                  <span class="inline-flex items-center justify-center px-2 ml-1 text-sm font-medium text-gray-800 bg-green-100 rounded-full">Jefe</span>
+                  <span class="inline-flex items-center justify-center px-2 ml-1 text-sm font-medium text-gray-800 bg-blue-100 rounded-full">Jefe</span>
                </a>
             </li>
 			@endif
@@ -229,7 +257,26 @@
                 </li>
 
                 @endif
-
+                @if(session('fkTipoUsuario') == 1)		
+			 <li>
+                <a href="{{ url('/historialCompras') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-400">
+                    <svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Layer_2" data-name="Layer 2">
+                          <g id="invisible_box" data-name="invisible box">
+                            <rect width="48" height="48" fill="none"/>
+                          </g>
+                          <g id="Layer_7" data-name="Layer 7">
+                            <g>
+                              <path d="M34.3,20.1h0a6.7,6.7,0,0,1-4.1-1.3,2,2,0,0,0-2.8.6,1.8,1.8,0,0,0,.3,2.6A10.9,10.9,0,0,0,32,23.8V26a2,2,0,0,0,4,0V23.8a6.3,6.3,0,0,0,3-1.3,4.9,4.9,0,0,0,2-4h0c0-3.7-3.4-4.9-6.3-5.5s-3.5-1.3-3.5-1.8.2-.6.5-.9a3.4,3.4,0,0,1,1.8-.4,6.3,6.3,0,0,1,3.3.9,1.8,1.8,0,0,0,2.7-.5,1.9,1.9,0,0,0-.4-2.8A9.1,9.1,0,0,0,36,6.3V4a2,2,0,0,0-4,0V6.2c-3,.5-5,2.5-5,5.2s3.3,4.9,6.5,5.5,3.3,1.3,3.3,1.8S35.7,20.1,34.3,20.1Z"/>
+                              <path d="M42.2,31.7a5.2,5.2,0,0,0-4-1.1l-9.9,1.8a4.5,4.5,0,0,0-1.4-3.3L19.8,22H5a2,2,0,0,0-2,2v9a2,2,0,0,0,2,2H8.3l11.2,9.1,20.4-3.7a5,5,0,0,0,2.3-8.7Zm-3,4.8L20.5,39.9,10,31.2V26h8.2l5.9,5.9a.8.8,0,0,1-1.2,1.2l-3.5-3.5a2,2,0,0,0-2.8,2.8l3.5,3.5a4.5,4.5,0,0,0,3.4,1.4,5.7,5.7,0,0,0,1.8-.3h0l13.6-2.4a1.1,1.1,0,0,1,.8.2.9.9,0,0,1,.3.7A1,1,0,0,1,39.2,36.5Z"/>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                   <span class="flex-1 whitespace-nowrap">Historial Ventas </span>
+                </a>
+             </li>
+			 @endif
 
 
 
