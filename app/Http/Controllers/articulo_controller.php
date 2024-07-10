@@ -10,18 +10,14 @@ use App\Models\MovimientosArticulos;
 use App\Models\Cliente;
 use App\Models\detalleCompra;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-
-
-
 
 class articulo_controller extends Controller
 {
     public function todosLosArticulos(Request $request) {
  
         $datosArticulos = Articulo::join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-            ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-            ->select('categoriaArticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
+            ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+            ->select('categoriaarticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
             ->where('articulo.estatus', '!=', 3)
             ->get();
             
@@ -30,8 +26,8 @@ class articulo_controller extends Controller
     public function todosLosArticulos2(Request $request) {
  
         $datosArticulos = Articulo::join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-        ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-        ->select('categoriaArticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
+        ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+        ->select('categoriaarticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
         ->where('articulo.estatus', '!=', 3)
             ->get();
             
@@ -40,8 +36,8 @@ class articulo_controller extends Controller
     public function todosLosArticulos3(Request $request) {
  
         $datosArticulos = Articulo::join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-        ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-        ->select('categoriaArticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
+        ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+        ->select('categoriaarticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
         ->where('articulo.estatus', '!=', 3)
         ->get();
     
@@ -50,8 +46,8 @@ class articulo_controller extends Controller
     public function todosLosArticulos4(Request $request) {
  
         $datosArticulos = Articulo::join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-        ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-        ->select('categoriaArticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
+        ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+        ->select('categoriaarticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
         ->where('articulo.estatus', '!=', 3)
             ->get();
             
@@ -60,8 +56,8 @@ class articulo_controller extends Controller
     public function todosLosArticulos5(Request $request) {
  
         $datosArticulos = Articulo::join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-            ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-            ->select('categoriaArticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
+            ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+            ->select('categoriaarticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
             ->where('articulo.estatus', '!=', 3)
             ->get();
             
@@ -71,8 +67,8 @@ class articulo_controller extends Controller
     public function articuloDetalle($pkArticulo, $vista = "articuloDetalle") {
  
         $datosArticulos = Articulo::join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-        ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-        ->select('categoriaArticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
+        ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+        ->select('categoriaarticulo.*', 'articulo.*', 'unidad.*','articulo.estatus as ESTATUSARTICULO')
         ->where('articulo.pkArticulo', '=', $pkArticulo)
         ->first();
             
@@ -94,7 +90,7 @@ public function obtenerDetalleArticulo(Request  $req,  $id, $tipoVentaSelecciona
             'articulo.*',
             'articuloTipoVenta.cantidadTipoVenta',
             'articuloTipoVenta.enganche',
-            'categoriaArticulo.nombreCategoriaArticulo'
+            'categoriaarticulo.nombreCategoriaArticulo'
         )
         ->join('articuloTipoVenta', 'articuloTipoVenta.fkArticulo', '=', 'articulo.pkArticulo')
         ->join('categoriaarticulo', 'categoriaarticulo.pkCategoriaArticulo', '=', 'articulo.fkCategoriaArticulo')
@@ -166,17 +162,8 @@ public function obtenerCantidadTipoVenta(Request  $req,  $id, $tipoVentaSeleccio
       $imagen = $req->file('imagenArticulo');
       $rutaImagen = $imagen->store('public/images');
       $articulo->imagenArticulo = str_replace('public/', '', $rutaImagen);
-     } 
-     if ($req->cantidadActual>0) {
-         $articulo->estatus=1;
      }
-     if ($req->cantidadActual<= $req->cantidadMinima) {
-         $articulo->estatus=2;
-     }
-      if ($req->cantidadActual<=0) {
-         $articulo->estatus=0;
-     }
-      
+      $articulo->estatus=1;
     
       $articulo->save();
       if($articulo->pkArticulo){
@@ -211,16 +198,7 @@ public function obtenerCantidadTipoVenta(Request  $req,  $id, $tipoVentaSeleccio
         $rutaImagen = $imagen->store('public/images');
         $articulo->imagenArticulo = str_replace('public/', '', $rutaImagen);
         }
-       if ($req->cantidadActual>0) {
-         $articulo->estatus=1;
-     }
-     if ($req->cantidadActual<= $req->cantidadMinima) {
-         $articulo->estatus=2;
-     }
-      if ($req->cantidadActual<=0) {
-         $articulo->estatus=0;
-     }
-      
+       $articulo->estatus=1;
        $articulo->save();
 
     return redirect(url('/articulesList'))->with('success', '¡Actualizacion de Articulo Completada!');
@@ -279,11 +257,11 @@ public function obtenerCantidadTipoVenta(Request  $req,  $id, $tipoVentaSeleccio
   }
   public function todosmovimientosArticulos(Request $request) {
  
-    $datosMovimientos = Articulo::join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
-        ->join('movimientosArticulos', 'articulo.pkArticulo', '=', 'movimientosArticulos.fkArticulo')
-        ->join('tipoMovimiento', 'tipoMovimiento.pktipoMovimiento', '=', 'movimientosArticulos.fkTipoMovimiento')
-        ->join('empleado', 'empleado.pkEmpleado', '=', 'movimientosArticulos.fkEmpleado')
-        ->select('categoriaArticulo.*', 'movimientosArticulos.*','tipoMovimiento.*', 'empleado.*','articulo.*','articulo.estatus as ESTATUSARTICULO')
+    $datosMovimientos = Articulo::join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+        ->join('movimientosarticulos', 'articulo.pkArticulo', '=', 'movimientosarticulos.fkArticulo')
+        ->join('tipomovimiento', 'tipomovimiento.pktipoMovimiento', '=', 'movimientosarticulos.fkTipoMovimiento')
+        ->join('empleado', 'empleado.pkEmpleado', '=', 'movimientosarticulos.fkEmpleado')
+        ->select('categoriaarticulo.*', 'movimientosarticulos.*','tipomovimiento.*', 'empleado.*','articulo.*','articulo.estatus as ESTATUSARTICULO')
         ->get();
     
         
@@ -292,34 +270,25 @@ public function obtenerCantidadTipoVenta(Request  $req,  $id, $tipoVentaSeleccio
 
 
 function mostrarDetallesPorIdCompra($pkCompra, $vista = "detalleCompra"){
-
-
-$compra = Cliente::join('comprasCliente', 'comprasCliente.fkCliente', '=', 'cliente.pkCliente')
-    ->join('empleado', 'empleado.pkEmpleado', '=', 'comprasCliente.fkEmpleado')
-    ->leftJoin('colonia', 'colonia.pkColonia', '=', 'cliente.fkColonia')
-    ->leftJoin('municipio', 'municipio.pkMunicipio', '=', 'colonia.fkMunicipio')
+    $compra = Cliente::join('comprascliente', 'comprascliente.fkCliente', '=', 'cliente.pkCliente')
+    ->join('empleado', 'empleado.pkEmpleado', '=', 'comprascliente.fkEmpleado')
+    ->join('colonia', 'colonia.pkColonia', '=', 'cliente.fkColonia')
+    ->join('municipio', 'municipio.pkMunicipio', '=', 'colonia.fkMunicipio')
     ->select(
         'cliente.*',
-        'comprasCliente.*',
-        'comprasCliente.pkComprasCliente',
-        'comprasCliente.estatus as ESTATUSCOMPRA',
-        'empleado.*'
-    )
-    ->addSelect(DB::raw('COALESCE(cliente.telefono, "N/A") as telefono'))
-    ->addSelect(DB::raw('COALESCE(cliente.calle, "N/A") as calle'))
-    ->addSelect(DB::raw('COALESCE(colonia.nombreColonia, "N/A") as nombreColonia'))
-    ->addSelect(DB::raw('COALESCE(municipio.nombreMunicipio, "N/A") as nombreMunicipio'))
-    ->where('comprasCliente.pkComprasCliente', '=', $pkCompra)
+        'cliente.telefono',
+        'comprascliente.*',
+        'comprascliente.pkComprasCliente',
+        'comprascliente.estatus as ESTATUSCOMPRA',
+        'colonia.*', 'municipio.*','empleado.*'
+    )    
+    ->where('comprascliente.pkComprasCliente', '=', $pkCompra)
     ->first();
-
-
-
-    $articulos=detalleCompra::join('comprasCliente', 'comprasCliente.pkComprasCliente', '=', 'detalleCompra.fkComprasCliente')
-    ->join('articulo', 'articulo.pkArticulo', '=', 'detalleCompra.fkArticulo')
-    ->join('categoriaArticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
+    $articulos=detalleCompra::join('comprascliente', 'comprascliente.pkComprasCliente', '=', 'detalleCompra.fkComprasCliente')
+    ->join('articulo', 'articulo.pkArticulo', '=', 'detallecompra.fkArticulo')
+    ->join('categoriaarticulo', 'articulo.fkCategoriaArticulo', '=', 'categoriaArticulo.pkCategoriaArticulo')
     ->join('unidad', 'unidad.pkUnidad', '=', 'articulo.fkUnidad')    
-    ->select('articulo.*', 'detalleCompra.*','categoriaArticulo.*','comprasCliente.*','unidad.*')->where('comprasCliente.pkComprasCliente', '=', $pkCompra)->get();
-      
+    ->select('articulo.*', 'detallecompra.*','categoriaarticulo.*','comprascliente.*','unidad.*')->where('comprasCliente.pkComprasCliente', '=', $pkCompra)->get();
     return view($vista,compact("articulos","compra"));
   }
 

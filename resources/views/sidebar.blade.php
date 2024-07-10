@@ -259,6 +259,14 @@
                 @endif
                 @if(session('fkTipoUsuario') == 1)		
 			 <li>
+                <a href="{{ url('/unidadVision') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-400">
+				<svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" width="800px" height="800px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><path class="cls-1" d="M16.88,8.57l1.61-3.76a2.45,2.45,0,0,0,.19-.93A2.37,2.37,0,0,0,16.31,1.5H7.69A2.37,2.37,0,0,0,5.32,3.88a2.45,2.45,0,0,0,.19.93L7.12,8.57"/><path class="cls-1" d="M12,7.23a9.55,9.55,0,0,0-9.55,9.54c0,.12,0,.23,0,.34s0,.21,0,.31a8.64,8.64,0,0,0,.6,3.18,2.86,2.86,0,0,0,.79,1.12A3.37,3.37,0,0,0,6,22.5H18a3.33,3.33,0,0,0,2.15-.77,0,0,0,0,0,0,0,2.72,2.72,0,0,0,.77-1.09,8.59,8.59,0,0,0,.61-3.37v-.07c0-.13,0-.27,0-.42A9.55,9.55,0,0,0,12,7.23Z"/><line class="cls-1" x1="7.23" y1="12" x2="7.23" y2="19.64"/><path class="cls-1" d="M10.09,12V13a2.86,2.86,0,0,1-2.86,2.87h0a2.86,2.86,0,0,1,2.86,2.86v1"/><path class="cls-1" d="M14.86,15.82h1.91v.95a1.9,1.9,0,0,1-1.91,1.91h0A1.91,1.91,0,0,1,13,16.77V14.86A1.92,1.92,0,0,1,14.86,13h1.91"/></svg>
+                   <span class="flex-1 whitespace-nowrap">Unidades</span>
+                </a>
+             </li>
+			 @endif
+                @if(session('fkTipoUsuario') == 1)		
+			 <li>
                 <a href="{{ url('/historialCompras') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-400">
                     <svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                         <g id="Layer_2" data-name="Layer 2">
@@ -274,6 +282,18 @@
                         </g>
                       </svg>
                    <span class="flex-1 whitespace-nowrap">Historial Ventas </span>
+                </a>
+             </li>
+			 @endif
+             
+			 @if(session('fkTipoUsuario') == 1)		
+			 <li>
+                <a href="{{ url('/municipioVision') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-400">
+					<svg class="flex-shrink-0 w-10 h-5 text-gray-900 transition duration-75" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>											
+                   <span class="flex-1 whitespace-nowrap">Ubicaciones</span>
                 </a>
              </li>
 			 @endif
