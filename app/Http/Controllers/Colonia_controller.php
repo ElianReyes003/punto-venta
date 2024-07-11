@@ -28,7 +28,7 @@ class Colonia_controller extends Controller
             ->where('colonia.estatus', '=', 1)
             ->select('municipio.*', 'colonia.*')
             ->get();
-        return view('agregarYvistaColonia', compact('datosColonia'));
+        return view('agregarYVistaColonia', compact('datosColonia'));
     }
     
 
