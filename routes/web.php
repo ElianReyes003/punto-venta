@@ -84,12 +84,7 @@ Route::post('/bajaMunicipio/{pkMunicipio}', [Municipio_controller::class,"baja"]
 Route::post('/UpdateMunicipio/{pkMunicipio}', [Municipio_controller::class,"editar"])->name('municipio.actualizar');
 Route::get('/mostrarMunicipio/{pkMunicipio}', [Municipio_controller::class, 'mostrarPorId'])->name('municipio.mostrarPorId');
 
-
-
 Route::get('/clienteEspecifico/{pkCliente}', [cliente_controller::class, 'mostrarClientePorId'])->name('cliente.comprasEspecificas');
-
-
-
 
 //COLONIA CRUD
 Route::get('/coloniaVision', [Colonia_controller::class, 'mostrar'])->name('colonia.vista');
@@ -105,19 +100,11 @@ Route::post('/bajaUnidad/{pkUnidad}', [Unidad_controller::class,"baja"])->name('
 Route::post('/UpdateUnidad/{pkUnidad}', [Unidad_controller::class,"editar"])->name('unidad.actualizar');
 Route::get('/mostrarUnidad/{pkUnidad}', [Unidad_controller::class, 'mostrarPorId'])->name('unidad.mostrarPorId');
 
-
-
 //CATEGORIA ARTICULO CRUD
-
 Route::get('/categoriaArticuloVision', [categoriaArticulo_controller::class, 'mostrar'])->name('categoriaArticulo.vista');
-
 Route::post('/aggCategoriaArticulo', [categoriaArticulo_controller::class,"insertar"])->name('categoriaArticulo.insertar');
-
 Route::post('/bajaCategoriaArticulo/{pkArticulo}', [categoriaArticulo_controller::class,"baja"])->name('categoriaArticulo.baja');
-
 Route::post('/UpdateCategoriaArticulo/{pkCategoriaArticulo}', [categoriaArticulo_controller::class,"editar"])->name('categoriaArticulo.actualizar');
-
-
 Route::get('/mostrarCategoriaArticuloPorId/{pkCategoriaArticulo}', [categoriaArticulo_controller::class, 'mostrarPorId'])->name('categoriaArticulo.mostrarPorId');
 
 
@@ -126,7 +113,6 @@ Route::post('/aggCompraProveedor', [comprasProveedor_controller::class,"agregarP
 Route::get('/provDetalleCompra/{pkCompraProveedor}/{vista?}', [comprasProveedor_controller::class,"mostrarDetallesPorIdCompraProveedor"])->name('compraProveedor.detalle');
 Route::get('/generalBuysProveedores', [comprasProveedor_controller::class,"comprasGenerales"])->name('compraProveedor.general');
 Route::get('/proveedorEspecifico', [comprasProveedor_controller::class,"mostrarproveedorPorId"])->name('compraProveedor.ver');
-
 Route::get('/compraProveedor', [comprasProveedor_controller::class,"todosLosArticulosYProveedores"])->name('compraProveedor.realizar');
 
 
@@ -137,69 +123,44 @@ Route::get('/compraProveedor', [comprasProveedor_controller::class,"todosLosArti
 Route::post('/aggArticulo', [articulo_controller::class,"agregarArticulo"])->name('articulo.insertar');
 Route::post('/updateArticulo', [articulo_controller::class,"actualizarArticulo"])->name('articulo.actualizar');
 Route::post('/bajaArticulo/{pkArticulo}', [articulo_controller::class,"baja"])->name('articulo.baja');
-
 Route::get('/articuloDetails/{pkArticulo}/{vista?}', [articulo_controller::class, 'articuloDetalle'])->name('articulo.detalle');
 Route::post('/articuloMovement/{pkArticulo}', [articulo_controller::class, 'movimientosArticulo'])->name('articulo.Movimiento');
 
 
 
 Route::get('/tuInicio', [comprasCliente_controller::class,"articulosVendidos"])->name('paginaInicio');
-
-
 Route::post('/aggCompraNewClient', [comprasCliente_controller::class,"agregarNewClientBuy"])->name('compra.insertar');
-
 Route::post('/aggCompraClient', [comprasCliente_controller::class,"agregarClientBuy"])->name('compraCExistente.insertar');
-
 Route::get('/opcionesColoniasId', [ubicaciones_controller::class, 'obtenerColoniasId'])->name('Ubicaciones.coloniasId');
-
 Route::get('/opcionesColoniasString', [ubicaciones_controller::class, 'obtenerColoniasString'])->name('Ubicaciones.coloniasString');
 Route::get('/opcionesCallesId', [ubicaciones_controller::class, 'obtenerCallesId'])->name('Ubicaciones.callesId');
 Route::get('/opcionesCallesString', [ubicaciones_controller::class, 'obtenerCallesString'])->name('Ubicaciones.callesString');
-
 Route::get('/compraNewClient', [articulo_controller::class, 'todosLosArticulos'])->name('buscarArticulo');
 Route::get('/compraClient', [articulo_controller::class, 'todosLosArticulos2'])->name('buscarArticulo2');
 Route::get('/articulesList', [articulo_controller::class, 'todosLosArticulos3'])->name('buscarArticulo3');
-
-
-////CLIENTE CRUD///////////////////////////7
+//CLIENTE CRUD///////////////////////////7
 Route::get('/ClienteBusqueda', [cliente_controller::class, 'buscarCliente'])->name('buscarCliente');
-
 Route::get('/ComprasBusqueda/{pkCliente}', [cliente_controller::class, 'mostrarClientePorId'])->name('cliente.compras');
-
 Route::get('/edicionCliente/{pkCliente}', [cliente_controller::class, 'mostrarClienteIndividual'])->name('cliente.mostrarEdicion');
 Route::post('/actualizarCliente/{pkCliente}', [cliente_controller::class, 'actualizar'])->name('cliente.actualizar');
 Route::post('/bajaCliente/{pkCliente}', [cliente_controller::class, 'baja'])->name('cliente.baja');
-
-
 Route::get('/obtener-detalle-articulo/{id}/{tipoVenta}', [articulo_controller::class,"obtenerDetalleArticulo"])->name('articulo.Articulo');
 Route::get('/obtener-cantidad-tipo-venta/{id}/{tipoVenta}', [articulo_controller::class,"obtenerCantidadTipoVenta"])->name('articulo.cantidadVenta');
-
-
 Route::post('/abonoInsertion', [abono_controller::class,"agregar"])->name('abono.insertar');
-
-
-///////PROVEEDORES CRUD   /////////////
+///PROVEEDORES CRUD   /////////////
 Route::post('/aggNewProveedor', [Proveedores_controller::class,"agregar"])->name('proveedor.insertar');
 Route::get('/allProveedor', [Proveedores_controller::class,"mostrarProveedoresGeneral"])->name('proveedor.mostrar');
 Route::get('/idProveedor/{pkProveedor}/{vista?}', [Proveedores_controller::class,"mostrarProveedorPorId"])->name('proveedor.mostrarPorId');
 Route::post('/updateProveedor', [Proveedores_controller::class,"actualizar"])->name('proveedor.actualizar');
 Route::post('/deleteProveedor/{pkProveedor}', [Proveedores_controller::class,"baja"])->name('proveedor.baja');
-
-
-
-///////EMPLEADOS CRUD   /////////////
+///EMPLEADOS CRUD   /////////////
 Route::post('/aggNewEmployee', [empleado_controller::class,"agregar"])->name('empleado.insertar');
 Route::get('/allEmployees', [empleado_controller::class,"mostrarUsuariosGeneral"])->name('empleado.mostrar');
 Route::get('/idEmployee/{pkEmpleado}/{vista?}', [empleado_controller::class,"mostrarUsuarioPorId"])->name('empleado.mostrarPorId');
 Route::post('/updateEmployee', [empleado_controller::class,"actualizar"])->name('empleado.actualizar');
 Route::post('/deleteEmployee', [empleado_controller::class,"baja"])->name('empleado.baja');
-
 Route::post('/inicioSesion', [empleado_controller::class, 'login'])->name('inicioSesion');
-
 Route::get('clienteEspecifico/{pkCliente}', [cliente_controller::class, 'mostrarClientePorId'])->name('cliente.detalle');
-
-
-
 /// AREA DE PRESUPUESTOS //////////////////////////////////////////////////////////
 Route::get('seleccionaPresupuesto/{pkPresupuesto}/{vista?}', [presupuestos_controller::class, 'mostrarDetallesPorIdPresupuesto'])->name('cliente.presupuesto');
 Route::get('/historialPresupuesto', [presupuestos_controller::class,"presupuestosGenerales"])->name('presupuestos.ver');
